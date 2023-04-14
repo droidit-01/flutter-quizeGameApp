@@ -8,7 +8,7 @@ class Quizzler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: Colors.blue,
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -30,8 +30,10 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Question> questionBank = [
     Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-    Question(q:  'Approximately one quarter of human bones are in the feet.', a: true),
-    Question(q:'A slug\'s blood is green.' , a: true),
+    Question(
+        q: 'Approximately one quarter of human bones are in the feet.',
+        a: true),
+    Question(q: 'A slug\'s blood is green.', a: true),
     Question(q: 'Do you think right.', a: true),
     Question(q: 'you are pussesive', a: false),
     Question(q: 'you love songs', a: true),
@@ -42,16 +44,16 @@ class _QuizPageState extends State<QuizPage> {
     bool correnctAnswer = questionBank[questionNumber].questionAnswer;
 
     setState(() {
-    if(userPickedAnswer == correnctAnswer){
-      scoreKeeper.add(Icon(Icons.check,color: Colors.green));
-    }else{
-    scoreKeeper.add(Icon(Icons.close, color: Colors.red));
-    }
+      if (userPickedAnswer == correnctAnswer) {
+        scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+      } else {
+        scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+      }
 
       questionNumber++;
     });
-
   }
+
   int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
@@ -89,7 +91,6 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 checkAnswer(true);
-
 
                 print(questionNumber);
               },
